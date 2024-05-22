@@ -40,8 +40,7 @@ public class Producer {
 
         for (int i = 0; i < numeroRegistrosGPS; i++) {
             for (Camion camion : items) {
-                float addedKm = 1.3f;
-                Timestamp addedTime = null;
+                float addedKm = 1 + (float)(Math.random() * 2);
 
                 ObjectMapper objectMapper = new ObjectMapper();
                 String itemString = objectMapper.writeValueAsString(camion);
@@ -51,7 +50,7 @@ public class Producer {
                 );
 
                 camion.setKm(camion.getKm() + addedKm);
-                camion.setTimestamp(new Timestamp(camion.getTimestamp().getTime() + (5 * 60 * 1000L) + (long)(Math.random() * (10 * 60 * 1000L))));
+                camion.setTimestamp(new Timestamp(camion.getTimestamp().getTime() + (5 * 60 * 1000L)));
 
             }
         }
